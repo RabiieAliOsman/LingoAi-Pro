@@ -490,8 +490,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
           <button class="pro-sector-tab" onclick="proSelSector('trade',this)">🌍 Dış Ticaret</button>
         </div>
 
-        <div class="pro-flip-hint">💡 Kartlara tıkla — çeviri/örnek cümle görünsün</div>
-        <div class="pro-card-grid" id="proCardGrid" style="margin-top:10px"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+          <div class="pro-flip-hint">💡 Kartlara tıkla — çeviri/örnek cümle görünsün</div>
+          <div style="font-size:11px;font-weight:700;color:var(--text3)" id="proWordCount">0 kelime</div>
+        </div>
+        <div class="pro-card-grid" id="proCardGrid" style="margin-top:8px"></div>
+        <button id="proLoadMoreBtn" onclick="loadMoreProWords()" style="width:100%;margin-top:12px;padding:12px;background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:800;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .2s">✨ AI ile 20 Kelime Daha Ekle</button>
       </div>
     </div>
 
@@ -1073,10 +1077,11 @@ function proSelSector(s,el){
   renderProCards();
 }
 
+let proAIWords=[], proLoading=false;
+
 function renderProCards(){
-  const data=PRO_WORDS[proLang];
+  const data=[...PRO_WORDS[proLang],...proAIWords.filter(w=>w.lang===proLang)];
   const filtered=proSector==='all'?data:data.filter(w=>w.s===proSector);
-  const sectorColors={logistics:'',finance:'',trade:''};
   const grid=document.getElementById('proCardGrid');
   grid.innerHTML=filtered.map((w,i)=>`
     <div class="pro-card" id="proCard${i}" onclick="proFlip(${i})">
@@ -1086,23 +1091,54 @@ function renderProCards(){
       <div class="pro-ex">"${w.e}"</div>
       <span class="pro-sector-badge">${w.s==='logistics'?'🚢 Lojistik':w.s==='finance'?'💰 Finans':'🌍 Dış Ticaret'}</span>
     </div>`).join('');
+  const cnt=document.getElementById('proWordCount');
+  if(cnt) cnt.textContent=filtered.length+' kelime';
 }
 
 function proFlip(i){
+  const data=[...PRO_WORDS[proLang],...proAIWords.filter(w=>w.lang===proLang)];
+  const filtered=proSector==='all'?data:data.filter(w=>w.s===proSector);
   const card=document.getElementById('proCard'+i);
   card.classList.toggle('flipped');
   if(card.classList.contains('flipped')){
     addXP(2);
-    const data=PRO_WORDS[proLang];
-    const filtered=proSector==='all'?data:data.filter(w=>w.s===proSector);
     const w=filtered[i];
-    if('speechSynthesis' in window){
+    if(w&&'speechSynthesis' in window){
       const utt=new SpeechSynthesisUtterance(w.w);
-      utt.lang=vdVoices[proLang];utt.rate=0.9;
+      utt.lang=vdVoices[proLang]||'en-US';utt.rate=0.9;
       window.speechSynthesis.cancel();
       window.speechSynthesis.speak(utt);
     }
   }
+}
+
+async function loadMoreProWords(){
+  if(proLoading)return;
+  proLoading=true;
+  const btn=document.getElementById('proLoadMoreBtn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ Yükleniyor...';}
+  const sectorName=proSector==='all'?'logistics, finance, and international trade':proSector==='logistics'?'logistics and supply chain':proSector==='finance'?'finance and banking':'international trade and customs';
+  const langName=proLang==='en'?'English':proLang==='de'?'German':'Chinese (Mandarin)';
+  const existing=[...PRO_WORDS[proLang],...proAIWords.filter(w=>w.lang===proLang)].map(w=>w.w).join(', ');
+  try{
+    const txt=await ai([{role:'user',content:`Generate 20 professional vocabulary words for ${sectorName} in ${langName}. These words are NOT in the existing list: ${existing.slice(0,300)}
+
+Reply ONLY with raw JSON array, no markdown:
+[{"w":"word","tr":"Turkish meaning","p":"pronunciation","e":"example sentence","s":"logistics|finance|trade"},...]
+
+All items must have all 5 fields. "s" must be exactly one of: logistics, finance, trade.`}],1200);
+    const start=txt.indexOf('[');
+    const end=txt.lastIndexOf(']')+1;
+    if(start>=0&&end>start){
+      const arr=JSON.parse(txt.slice(start,end));
+      const valid=arr.filter(w=>w.w&&w.tr&&w.p&&w.e&&['logistics','finance','trade'].includes(w.s));
+      valid.forEach(w=>w.lang=proLang);
+      proAIWords=[...proAIWords,...valid];
+      renderProCards();
+    }
+  }catch(e){console.error(e);}
+  proLoading=false;
+  if(btn){btn.disabled=false;btn.textContent='✨ AI ile 20 Kelime Daha Ekle';}
 }
 
 // ── VIDEO DERS ──
