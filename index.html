@@ -75,8 +75,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .logout-btn{font-size:11px;padding:4px 10px;border:1.5px solid var(--border);border-radius:99px;background:#fff;color:var(--text2);cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700}
 .logout-btn:hover{border-color:var(--red);color:var(--red)}
 
-.bnav{background:#fff;border-top:2px solid var(--border);display:grid;grid-template-columns:repeat(6,1fr);position:sticky;bottom:0;z-index:200;box-shadow:0 -4px 12px rgba(0,0,0,.05)}
-.bn-item{display:flex;flex-direction:column;align-items:center;padding:8px 4px;cursor:pointer;color:var(--text3);font-size:9px;font-weight:700;gap:2px;border:none;background:transparent;font-family:'Nunito',sans-serif;transition:all .15s;position:relative}
+.bnav{background:#fff;border-top:2px solid var(--border);display:grid;grid-template-columns:repeat(7,1fr);position:sticky;bottom:0;z-index:200;box-shadow:0 -4px 12px rgba(0,0,0,.05)}
+.bn-item{display:flex;flex-direction:column;align-items:center;padding:6px 2px;cursor:pointer;color:var(--text3);font-size:8px;font-weight:700;gap:2px;border:none;background:transparent;font-family:'Nunito',sans-serif;transition:all .15s;position:relative}
 .bn-item:hover,.bn-item.active{color:var(--accent)}
 .bn-item.active::after{content:'';position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);width:20px;height:3px;background:var(--accent);border-radius:99px}
 .bn-icon{font-size:20px}
@@ -203,7 +203,30 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .ai-txt{font-size:13px;color:var(--text2);line-height:1.7}
 .action-btn{width:100%;padding:11px;border-radius:var(--radius-sm);font-size:13px;font-weight:800;cursor:pointer;border:2px solid var(--border);background:var(--surface);color:var(--text2);font-family:'Nunito',sans-serif;margin-top:7px}
 
-/* VIDEO DERS */
+/* MESLEKİ KELİMELER */
+.pro-sector-tabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.pro-sector-tab{padding:7px 14px;border:2.5px solid var(--border);border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;background:#fff;font-family:'Nunito',sans-serif;transition:all .15s}
+.pro-sector-tab.active{border-color:var(--accent);background:var(--accent-light);color:var(--accent)}
+.pro-lang-row{display:flex;gap:6px;margin-bottom:10px}
+.pro-card-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pro-card{background:#fff;border:2.5px solid var(--border);border-radius:var(--radius-sm);padding:14px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.pro-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--accent);border-radius:4px 0 0 4px}
+.pro-card.de-card::before{background:#2d8a4e}
+.pro-card.zh-card::before{background:#c0392b}
+.pro-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 4px 16px rgba(88,101,242,.12)}
+.pro-card.flipped{background:linear-gradient(135deg,var(--accent),var(--purple));border-color:var(--accent)}
+.pro-card.flipped .pro-word{color:#fff}
+.pro-card.flipped .pro-phonetic{color:rgba(255,255,255,.7)}
+.pro-card.flipped .pro-ex{color:rgba(255,255,255,.85)}
+.pro-card.flipped .pro-sector-badge{background:rgba(255,255,255,.2);color:#fff}
+.pro-word{font-size:16px;font-weight:900;color:var(--text);margin-bottom:3px}
+.pro-tr{font-size:13px;color:var(--text2);margin-bottom:4px;font-weight:600}
+.pro-phonetic{font-size:11px;color:var(--text3);margin-bottom:4px}
+.pro-ex{font-size:11px;color:var(--text2);font-style:italic;line-height:1.4;display:none}
+.pro-card.flipped .pro-ex{display:block}
+.pro-card.flipped .pro-tr{display:none}
+.pro-sector-badge{display:inline-block;font-size:9px;font-weight:700;padding:2px 7px;border-radius:99px;background:var(--surface);color:var(--text3);margin-top:5px;text-transform:uppercase;letter-spacing:.4px}
+.pro-flip-hint{font-size:11px;color:var(--text3);text-align:center;margin-top:8px}
 .vd-teacher{background:linear-gradient(135deg,#1a1a2e,#16213e);border-radius:var(--radius);padding:24px;text-align:center;position:relative;overflow:hidden;min-height:260px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .vd-avatar{width:110px;height:110px;border-radius:50%;margin:0 auto 14px;position:relative;display:flex;align-items:center;justify-content:center}
 .vd-avatar-inner{width:110px;height:110px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--purple));display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;z-index:2}
@@ -448,6 +471,30 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
       </div>
     </div>
 
+    <!-- MESLEKİ KELİMELER -->
+    <div class="page" id="pg-pro">
+      <div class="card" style="padding:16px">
+        <div style="font-size:15px;font-weight:800;margin-bottom:4px">💼 Mesleki Kelime Kartları</div>
+        <div style="font-size:12px;color:var(--text2);margin-bottom:12px">Lojistik, Finans ve Dış Ticaret terminolojisi</div>
+
+        <div class="pro-lang-row">
+          <button class="cls-btn active" data-l="en" onclick="proChLang('en',this)">🇬🇧 İngilizce</button>
+          <button class="cls-btn" data-l="de" onclick="proChLang('de',this)">🇩🇪 Almanca</button>
+          <button class="cls-btn" data-l="zh" onclick="proChLang('zh',this)">🇨🇳 Çince</button>
+        </div>
+
+        <div class="pro-sector-tabs">
+          <button class="pro-sector-tab active" onclick="proSelSector('all',this)">🌐 Tümü</button>
+          <button class="pro-sector-tab" onclick="proSelSector('logistics',this)">🚢 Lojistik</button>
+          <button class="pro-sector-tab" onclick="proSelSector('finance',this)">💰 Finans</button>
+          <button class="pro-sector-tab" onclick="proSelSector('trade',this)">🌍 Dış Ticaret</button>
+        </div>
+
+        <div class="pro-flip-hint">💡 Kartlara tıkla — çeviri/örnek cümle görünsün</div>
+        <div class="pro-card-grid" id="proCardGrid" style="margin-top:10px"></div>
+      </div>
+    </div>
+
     <!-- VIDEO DERS -->
     <div class="page" id="pg-video">
       <div class="cls-row" id="vdLangRow">
@@ -523,11 +570,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   </div>
 
   <div class="bnav">
-    <button class="bn-item active" onclick="showPage('home',this)"><span class="bn-icon">🏠</span>Ana Sayfa</button>
-    <button class="bn-item" onclick="showPage('lesson',this)"><span class="bn-icon">📚</span>Kelimeler</button>
-    <button class="bn-item" onclick="showPage('video',this)"><span class="bn-icon">🎬</span>Video Ders</button>
+    <button class="bn-item active" onclick="showPage('home',this)"><span class="bn-icon">🏠</span>Ana</button>
+    <button class="bn-item" onclick="showPage('lesson',this)"><span class="bn-icon">📚</span>Kelime</button>
+    <button class="bn-item" onclick="showPage('video',this)"><span class="bn-icon">🎬</span>Video</button>
+    <button class="bn-item" onclick="showPage('pro',this)"><span class="bn-icon">💼</span>Mesleki</button>
     <button class="bn-item" onclick="showPage('chat',this)"><span class="bn-icon">💬</span>Sohbet</button>
-    <button class="bn-item" onclick="showPage('news',this)"><span class="bn-icon">📰</span>Haberler</button>
+    <button class="bn-item" onclick="showPage('news',this)"><span class="bn-icon">📰</span>Haber</button>
     <button class="bn-item" onclick="showPage('progress',this)"><span class="bn-icon">📊</span>İlerleme</button>
   </div>
 </div>
@@ -730,6 +778,7 @@ function showPage(id,el){
   if(id==='progress')updateProgress();
   if(id==='home')updateHome();
   if(id==='video')window.speechSynthesis&&window.speechSynthesis.cancel();
+  if(id==='pro')renderProCards();
 }
 function goLesson(){showPage('lesson',document.querySelectorAll('.bn-item')[1]);}
 function goHome(){showPage('home',document.querySelectorAll('.bn-item')[0]);}
@@ -946,6 +995,114 @@ function loadStreak(){
   document.getElementById('tbStreak').textContent=streak;
   document.getElementById('sgS').textContent=streak;
   if(streak>=3)earnBadge('b-streak');
+}
+
+// ── MESLEKİ KELİMELER ──
+let proLang='en', proSector='all';
+
+const PRO_WORDS={
+  en:[
+    {w:'Freight',tr:'Navlun / Yük',p:'[freɪt]',e:'The freight costs increased by 20% this quarter.',s:'logistics'},
+    {w:'Customs clearance',tr:'Gümrük tahliyesi',p:'[ˈkʌstəmz ˈklɪərəns]',e:'Customs clearance took three days due to missing documents.',s:'logistics'},
+    {w:'Bill of lading',tr:'Konşimento',p:'[bɪl əv ˈleɪdɪŋ]',e:'The bill of lading must be presented at the port.',s:'logistics'},
+    {w:'Incoterms',tr:'Teslim koşulları',p:'[ˈɪnkəʊtɜːmz]',e:'We agreed on CIF Incoterms for this shipment.',s:'logistics'},
+    {w:'Warehouse',tr:'Depo / Ambar',p:'[ˈweəhaʊs]',e:'The goods are stored in our warehouse in Istanbul.',s:'logistics'},
+    {w:'Supply chain',tr:'Tedarik zinciri',p:'[səˈplaɪ tʃeɪn]',e:'The pandemic disrupted global supply chains severely.',s:'logistics'},
+    {w:'Letter of credit',tr:'Akreditif',p:'[ˈletər əv ˈkredɪt]',e:'We require a letter of credit before shipping.',s:'trade'},
+    {w:'Export license',tr:'İhracat lisansı',p:'[ˈekspɔːt ˈlaɪsəns]',e:'You need an export license for this product.',s:'trade'},
+    {w:'Tariff',tr:'Gümrük vergisi / Tarife',p:'[ˈtærɪf]',e:'The new tariff raised import costs significantly.',s:'trade'},
+    {w:'Trade deficit',tr:'Ticaret açığı',p:'[treɪd ˈdefɪsɪt]',e:'The country reported a trade deficit of $5 billion.',s:'trade'},
+    {w:'Embargo',tr:'Ambargo',p:'[ɪmˈbɑːɡəʊ]',e:'An embargo was placed on all imports from that country.',s:'trade'},
+    {w:'Free trade zone',tr:'Serbest ticaret bölgesi',p:'[friː treɪd zəʊn]',e:'The factory is located in a free trade zone.',s:'trade'},
+    {w:'Return on investment',tr:'Yatırım getirisi',p:'[rɪˈtɜːn ɒn ɪnˈvestmənt]',e:'The ROI for this project is expected to be 25%.',s:'finance'},
+    {w:'Liquidity',tr:'Likidite / Nakit akışı',p:'[lɪˈkwɪdɪti]',e:'The company faces a liquidity crisis this quarter.',s:'finance'},
+    {w:'Hedge',tr:'Riskten korunma',p:'[hedʒ]',e:'We hedge our currency risk with forward contracts.',s:'finance'},
+    {w:'Compound interest',tr:'Bileşik faiz',p:'[ˈkɒmpaʊnd ˈɪntrəst]',e:'Compound interest grows your savings exponentially.',s:'finance'},
+    {w:'Equity',tr:'Özkaynak / Hisse',p:'[ˈekwɪti]',e:'The startup raised $2M in equity financing.',s:'finance'},
+    {w:'Amortization',tr:'Amortisman',p:'[əˌmɔːtɪˈzeɪʃən]',e:'Loan amortization is spread over 10 years.',s:'finance'},
+  ],
+  de:[
+    {w:'Frachtkosten',tr:'Navlun / Taşıma maliyeti',p:'[ˈfʁaxtˌkɔstən]',e:'Die Frachtkosten sind um 20% gestiegen.',s:'logistics'},
+    {w:'Zollabfertigung',tr:'Gümrük tahliyesi',p:'[ˈtsɔlˌapˌfeːɐ̯tɪɡʊŋ]',e:'Die Zollabfertigung dauerte drei Tage.',s:'logistics'},
+    {w:'Konnossement',tr:'Konşimento',p:'[kɔnɔsəˈmɑ̃]',e:'Das Konnossement muss im Hafen vorgelegt werden.',s:'logistics'},
+    {w:'Lieferbedingungen',tr:'Teslim koşulları',p:'[ˈliːfɐbəˌdɪŋʊŋən]',e:'Wir haben CIF-Lieferbedingungen vereinbart.',s:'logistics'},
+    {w:'Lager',tr:'Depo / Ambar',p:'[ˈlaːɡɐ]',e:'Die Waren sind in unserem Lager in Istanbul.',s:'logistics'},
+    {w:'Lieferkette',tr:'Tedarik zinciri',p:'[ˈliːfɐˌkɛtə]',e:'Die Pandemie hat die globalen Lieferketten gestört.',s:'logistics'},
+    {w:'Akkreditiv',tr:'Akreditif',p:'[akʁeˈdiːtiːf]',e:'Wir benötigen ein Akkreditiv vor dem Versand.',s:'trade'},
+    {w:'Ausfuhrgenehmigung',tr:'İhracat lisansı',p:'[ˈaʊsfuːɐ̯ɡəˌneːmɪɡʊŋ]',e:'Sie brauchen eine Ausfuhrgenehmigung für dieses Produkt.',s:'trade'},
+    {w:'Zoll',tr:'Gümrük vergisi',p:'[tsɔl]',e:'Der neue Zoll hat die Importkosten erhöht.',s:'trade'},
+    {w:'Handelsdefizit',tr:'Ticaret açığı',p:'[ˈhandəlsdefiˌtsiːt]',e:'Das Land hat ein Handelsdefizit von 5 Milliarden.',s:'trade'},
+    {w:'Investitionsrendite',tr:'Yatırım getirisi',p:'[ɪnvɛsˈtiːtsjoːnsˌʁɛndɪtə]',e:'Die Rendite dieses Projekts beträgt 25%.',s:'finance'},
+    {w:'Liquidität',tr:'Likidite',p:'[likvidiˈtɛːt]',e:'Das Unternehmen hat eine Liquiditätskrise.',s:'finance'},
+    {w:'Eigenkapital',tr:'Özkaynak',p:'[ˈaɪɡənkaˌpiːtaːl]',e:'Das Startup hat 2 Millionen Eigenkapital aufgenommen.',s:'finance'},
+    {w:'Zinseszins',tr:'Bileşik faiz',p:'[ˈtsɪnzəsˌtsɪns]',e:'Zinseszins lässt Ihr Vermögen exponentiell wachsen.',s:'finance'},
+    {w:'Freihandelszone',tr:'Serbest ticaret bölgesi',p:'[ˈfʁaɪhandəlsˌtsoːnə]',e:'Die Fabrik liegt in einer Freihandelszone.',s:'trade'},
+    {w:'Absicherung',tr:'Riskten korunma',p:'[ˈapzɪçəʁʊŋ]',e:'Wir sichern unser Währungsrisiko mit Termingeschäften ab.',s:'finance'},
+  ],
+  zh:[
+    {w:'运费',tr:'Navlun / Kargo ücreti',p:'yùn fèi',e:'这个季度运费上涨了20%。',s:'logistics'},
+    {w:'清关',tr:'Gümrük tahliyesi',p:'qīng guān',e:'由于文件缺失，清关花了三天时间。',s:'logistics'},
+    {w:'提单',tr:'Konşimento',p:'tí dān',e:'提单必须在港口出示。',s:'logistics'},
+    {w:'贸易条款',tr:'Teslim koşulları (Incoterms)',p:'mào yì tiáo kuǎn',e:'我们同意使用CIF贸易条款。',s:'logistics'},
+    {w:'仓库',tr:'Depo / Ambar',p:'cāng kù',e:'货物存放在我们伊斯坦布尔的仓库里。',s:'logistics'},
+    {w:'供应链',tr:'Tedarik zinciri',p:'gōng yìng liàn',e:'疫情严重破坏了全球供应链。',s:'logistics'},
+    {w:'信用证',tr:'Akreditif',p:'xìn yòng zhèng',e:'我们要求在发货前提供信用证。',s:'trade'},
+    {w:'出口许可证',tr:'İhracat lisansı',p:'chū kǒu xǔ kě zhèng',e:'该产品需要出口许可证。',s:'trade'},
+    {w:'关税',tr:'Gümrük vergisi',p:'guān shuì',e:'新关税大幅提高了进口成本。',s:'trade'},
+    {w:'贸易逆差',tr:'Ticaret açığı',p:'mào yì nì chā',e:'该国报告贸易逆差为50亿美元。',s:'trade'},
+    {w:'自由贸易区',tr:'Serbest ticaret bölgesi',p:'zì yóu mào yì qū',e:'工厂位于自由贸易区。',s:'trade'},
+    {w:'投资回报率',tr:'Yatırım getirisi (ROI)',p:'tóu zī huí bào lǜ',e:'该项目的投资回报率预计为25%。',s:'finance'},
+    {w:'流动性',tr:'Likidite',p:'liú dòng xìng',e:'该公司面临流动性危机。',s:'finance'},
+    {w:'对冲',tr:'Riskten korunma',p:'duì chōng',e:'我们用远期合约对冲汇率风险。',s:'finance'},
+    {w:'复利',tr:'Bileşik faiz',p:'fù lì',e:'复利使您的储蓄呈指数增长。',s:'finance'},
+    {w:'股权',tr:'Özkaynak / Hisse',p:'gǔ quán',e:'这家初创公司筹集了200万美元的股权融资。',s:'finance'},
+  ]
+};
+
+function proChLang(l,el){
+  proLang=l;
+  document.querySelectorAll('.pro-lang-row .cls-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderProCards();
+}
+
+function proSelSector(s,el){
+  proSector=s;
+  document.querySelectorAll('.pro-sector-tab').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  renderProCards();
+}
+
+function renderProCards(){
+  const data=PRO_WORDS[proLang];
+  const filtered=proSector==='all'?data:data.filter(w=>w.s===proSector);
+  const sectorColors={logistics:'',finance:'',trade:''};
+  const grid=document.getElementById('proCardGrid');
+  grid.innerHTML=filtered.map((w,i)=>`
+    <div class="pro-card" id="proCard${i}" onclick="proFlip(${i})">
+      <div class="pro-word">${w.w}</div>
+      <div class="pro-tr">${w.tr}</div>
+      <div class="pro-phonetic">${w.p}</div>
+      <div class="pro-ex">"${w.e}"</div>
+      <span class="pro-sector-badge">${w.s==='logistics'?'🚢 Lojistik':w.s==='finance'?'💰 Finans':'🌍 Dış Ticaret'}</span>
+    </div>`).join('');
+}
+
+function proFlip(i){
+  const card=document.getElementById('proCard'+i);
+  card.classList.toggle('flipped');
+  if(card.classList.contains('flipped')){
+    addXP(2);
+    const data=PRO_WORDS[proLang];
+    const filtered=proSector==='all'?data:data.filter(w=>w.s===proSector);
+    const w=filtered[i];
+    if('speechSynthesis' in window){
+      const utt=new SpeechSynthesisUtterance(w.w);
+      utt.lang=vdVoices[proLang];utt.rate=0.9;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utt);
+    }
+  }
 }
 
 // ── VIDEO DERS ──
