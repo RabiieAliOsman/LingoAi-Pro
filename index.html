@@ -319,11 +319,14 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     <div class="ob-sub">İstediğin zaman değiştirebilirsin</div>
   </div>
 
-  <div id="obLangStep">
-    <div class="lang-grid">
+    <div id="obLangStep">
+    <div class="lang-grid" style="grid-template-columns:repeat(3,1fr)">
       <div class="lang-opt sel" data-l="en" onclick="selLang(this)"><span class="lf">🇬🇧</span><div class="ln">İngilizce</div></div>
       <div class="lang-opt" data-l="de" onclick="selLang(this)"><span class="lf">🇩🇪</span><div class="ln">Almanca</div></div>
       <div class="lang-opt" data-l="zh" onclick="selLang(this)"><span class="lf">🇨🇳</span><div class="ln">Çince</div></div>
+      <div class="lang-opt" data-l="ja" onclick="selLang(this)"><span class="lf">🇯🇵</span><div class="ln">Japonca</div></div>
+      <div class="lang-opt" data-l="ar" onclick="selLang(this)"><span class="lf">🇸🇦</span><div class="ln">Arapça</div></div>
+      <div class="lang-opt" data-l="fr" onclick="selLang(this)"><span class="lf">🇫🇷</span><div class="ln">Fransızca</div></div>
     </div>
     <button class="ob-btn" onclick="showLevelStep()">Devam Et →</button>
   </div>
@@ -402,9 +405,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
         <div class="hearts" id="hearts"><span class="heart">❤️</span><span class="heart">❤️</span><span class="heart">❤️</span></div>
       </div>
       <div class="cls-row">
-        <button class="cls-btn active" data-l="en" onclick="chLessonLang('en',this)">🇬🇧 İngilizce</button>
-        <button class="cls-btn" data-l="de" onclick="chLessonLang('de',this)">🇩🇪 Almanca</button>
-        <button class="cls-btn" data-l="zh" onclick="chLessonLang('zh',this)">🇨🇳 Çince</button>
+        <button class="cls-btn active" data-l="en" onclick="chLessonLang('en',this)">🇬🇧 EN</button>
+        <button class="cls-btn" data-l="de" onclick="chLessonLang('de',this)">🇩🇪 DE</button>
+        <button class="cls-btn" data-l="zh" onclick="chLessonLang('zh',this)">🇨🇳 ZH</button>
+        <button class="cls-btn" data-l="ja" onclick="chLessonLang('ja',this)">🇯🇵 JA</button>
+        <button class="cls-btn" data-l="ar" onclick="chLessonLang('ar',this)">🇸🇦 AR</button>
+        <button class="cls-btn" data-l="fr" onclick="chLessonLang('fr',this)">🇫🇷 FR</button>
       </div>
       <div class="word-card">
         <span class="wc-emoji" id="wcEm">⏳</span>
@@ -418,6 +424,10 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
         <div class="fb-bar" id="fbBar"><span id="fbIcon">🎉</span><span id="fbTxt">Doğru!</span></div>
       </div>
       <button class="cont-btn" id="contBtn" onclick="nextLesson()">Devam Et →</button>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px">
+        <div style="font-size:11px;color:var(--text3);font-weight:600" id="lessonWordCount">10 kelime</div>
+        <button id="lessonMoreBtn" onclick="fetchMoreWords()" style="font-size:11px;padding:5px 12px;border:1.5px solid var(--accent);border-radius:99px;background:var(--accent-light);color:var(--accent);cursor:pointer;font-family:'Nunito',sans-serif;font-weight:700">✨ 20 Yeni Kelime Ekle</button>
+      </div>
     </div>
 
     <!-- CHAT -->
@@ -426,9 +436,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
         <div style="font-size:15px;font-weight:800;margin-bottom:4px">💬 AI Konuşma Koçu</div>
         <div style="font-size:12px;color:var(--text2);margin-bottom:10px">AI seni gerçek zamanlı düzeltir</div>
         <div class="cls-row">
-          <button class="cls-btn active" data-l="en" onclick="chChatLang('en',this)">🇬🇧 İngilizce</button>
-          <button class="cls-btn" data-l="de" onclick="chChatLang('de',this)">🇩🇪 Almanca</button>
-          <button class="cls-btn" data-l="zh" onclick="chChatLang('zh',this)">🇨🇳 Çince</button>
+          <button class="cls-btn active" data-l="en" onclick="chChatLang('en',this)">🇬🇧 EN</button>
+          <button class="cls-btn" data-l="de" onclick="chChatLang('de',this)">🇩🇪 DE</button>
+          <button class="cls-btn" data-l="zh" onclick="chChatLang('zh',this)">🇨🇳 ZH</button>
+          <button class="cls-btn" data-l="ja" onclick="chChatLang('ja',this)">🇯🇵 JA</button>
+          <button class="cls-btn" data-l="ar" onclick="chChatLang('ar',this)">🇸🇦 AR</button>
+          <button class="cls-btn" data-l="fr" onclick="chChatLang('fr',this)">🇫🇷 FR</button>
         </div>
         <div class="sc-tabs">
           <button class="sc-tab active" onclick="loadSc('cafe',this)">☕ Kafede</button>
@@ -455,9 +468,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
         <div style="font-size:15px;font-weight:800;margin-bottom:4px">📰 Haberlerle Öğren</div>
         <div style="font-size:12px;color:var(--text2);margin-bottom:10px">Güncel haberlerle kelime hazineni genişlet</div>
         <div class="nls-row">
-          <button class="nls-btn active" data-l="en" onclick="chNewsLang('en',this)">🇬🇧 İngilizce</button>
-          <button class="nls-btn" data-l="de" onclick="chNewsLang('de',this)">🇩🇪 Almanca</button>
-          <button class="nls-btn" data-l="zh" onclick="chNewsLang('zh',this)">🇨🇳 Çince</button>
+          <button class="nls-btn active" data-l="en" onclick="chNewsLang('en',this)">🇬🇧 EN</button>
+          <button class="nls-btn" data-l="de" onclick="chNewsLang('de',this)">🇩🇪 DE</button>
+          <button class="nls-btn" data-l="zh" onclick="chNewsLang('zh',this)">🇨🇳 ZH</button>
+          <button class="nls-btn" data-l="ja" onclick="chNewsLang('ja',this)">🇯🇵 JA</button>
+          <button class="nls-btn" data-l="ar" onclick="chNewsLang('ar',this)">🇸🇦 AR</button>
+          <button class="nls-btn" data-l="fr" onclick="chNewsLang('fr',this)">🇫🇷 FR</button>
         </div>
         <div class="ncats">
           <div class="ncat active" onclick="selCat('business',this)">💼 İş</div>
@@ -478,9 +494,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
         <div style="font-size:12px;color:var(--text2);margin-bottom:12px">Lojistik, Finans ve Dış Ticaret terminolojisi</div>
 
         <div class="pro-lang-row">
-          <button class="cls-btn active" data-l="en" onclick="proChLang('en',this)">🇬🇧 İngilizce</button>
-          <button class="cls-btn" data-l="de" onclick="proChLang('de',this)">🇩🇪 Almanca</button>
-          <button class="cls-btn" data-l="zh" onclick="proChLang('zh',this)">🇨🇳 Çince</button>
+          <button class="cls-btn active" data-l="en" onclick="proChLang('en',this)">🇬🇧 EN</button>
+          <button class="cls-btn" data-l="de" onclick="proChLang('de',this)">🇩🇪 DE</button>
+          <button class="cls-btn" data-l="zh" onclick="proChLang('zh',this)">🇨🇳 ZH</button>
+          <button class="cls-btn" data-l="ja" onclick="proChLang('ja',this)">🇯🇵 JA</button>
+          <button class="cls-btn" data-l="ar" onclick="proChLang('ar',this)">🇸🇦 AR</button>
+          <button class="cls-btn" data-l="fr" onclick="proChLang('fr',this)">🇫🇷 FR</button>
         </div>
 
         <div class="pro-sector-tabs">
@@ -502,9 +521,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
     <!-- VIDEO DERS -->
     <div class="page" id="pg-video">
       <div class="cls-row" id="vdLangRow">
-        <button class="cls-btn active" data-l="en" onclick="vdChLang('en',this)">🇬🇧 İngilizce</button>
-        <button class="cls-btn" data-l="de" onclick="vdChLang('de',this)">🇩🇪 Almanca</button>
-        <button class="cls-btn" data-l="zh" onclick="vdChLang('zh',this)">🇨🇳 Çince</button>
+        <button class="cls-btn active" data-l="en" onclick="vdChLang('en',this)">🇬🇧 EN</button>
+        <button class="cls-btn" data-l="de" onclick="vdChLang('de',this)">🇩🇪 DE</button>
+        <button class="cls-btn" data-l="zh" onclick="vdChLang('zh',this)">🇨🇳 ZH</button>
+        <button class="cls-btn" data-l="ja" onclick="vdChLang('ja',this)">🇯🇵 JA</button>
+        <button class="cls-btn" data-l="ar" onclick="vdChLang('ar',this)">🇸🇦 AR</button>
+        <button class="cls-btn" data-l="fr" onclick="vdChLang('fr',this)">🇫🇷 FR</button>
       </div>
 
       <div class="vd-teacher" id="vdTeacher">
@@ -599,7 +621,10 @@ let ltCur=0, ltScore=0;
 const L={
   en:{name:'İngilizce',flag:'🇬🇧',native:'English'},
   de:{name:'Almanca',flag:'🇩🇪',native:'Deutsch'},
-  zh:{name:'Çince',flag:'🇨🇳',native:'Chinese (Mandarin)'}
+  zh:{name:'Çince',flag:'🇨🇳',native:'Chinese (Mandarin)'},
+  ja:{name:'Japonca',flag:'🇯🇵',native:'Japanese'},
+  ar:{name:'Arapça',flag:'🇸🇦',native:'Arabic'},
+  fr:{name:'Fransızca',flag:'🇫🇷',native:'French'}
 };
 
 const WORDS={
@@ -638,6 +663,42 @@ const WORDS={
     {w:'时间',p:'shí jiān',tr:'Zaman',e:'时间过得很快！',em:'⏰',opts:['Para','Yer','Zaman','Hız'],c:2},
     {w:'漂亮',p:'piào liàng',tr:'Güzel',e:'她很漂亮！',em:'✨',opts:['Güzel','Çirkin','Küçük','Büyük'],c:0},
     {w:'高兴',p:'gāo xìng',tr:'Mutlu / Sevinçli',e:'我很高兴认识你！',em:'😊',opts:['Üzgün','Mutlu / Sevinçli','Kızgın','Yorgun'],c:1},
+  ],
+  ja:[
+    {w:'こんにちは',p:'Konnichiwa',tr:'Merhaba (gündüz)',e:'こんにちは、お元気ですか？',em:'👋',opts:['Merhaba','Hoşçakal','Teşekkürler','İyi geceler'],c:0},
+    {w:'ありがとう',p:'Arigatou',tr:'Teşekkür ederim',e:'助けてくれてありがとう！',em:'🙏',opts:['Lütfen','Evet','Teşekkür ederim','Hayır'],c:2},
+    {w:'おはよう',p:'Ohayou',tr:'Günaydın',e:'おはようございます！',em:'🌅',opts:['İyi geceler','Günaydın','Merhaba','Hoşçakal'],c:1},
+    {w:'すみません',p:'Sumimasen',tr:'Özür dilerim / Pardon',e:'すみません、道を教えてください。',em:'🙇',opts:['Merhaba','Lütfen','Özür dilerim / Pardon','Evet'],c:2},
+    {w:'水',p:'Mizu',tr:'Su',e:'水をください。',em:'💧',opts:['Süt','Su','Kahve','Çay'],c:1},
+    {w:'友達',p:'Tomodachi',tr:'Arkadaş',e:'彼女は私の友達です。',em:'👫',opts:['Aile','Öğretmen','Arkadaş','Komşu'],c:2},
+    {w:'仕事',p:'Shigoto',tr:'İş',e:'毎日仕事をしています。',em:'💼',opts:['Tatil','İş','Oyun','Uyku'],c:1},
+    {w:'きれい',p:'Kirei',tr:'Güzel / Temiz',e:'今日はとてもきれいな日ですね。',em:'✨',opts:['Güzel / Temiz','Çirkin','Küçük','Büyük'],c:0},
+    {w:'時間',p:'Jikan',tr:'Zaman',e:'時間が早く過ぎます。',em:'⏰',opts:['Para','Yer','Zaman','Hız'],c:2},
+    {w:'嬉しい',p:'Ureshii',tr:'Mutlu / Sevinçli',e:'あなたに会えて嬉しいです！',em:'😊',opts:['Üzgün','Kızgın','Mutlu / Sevinçli','Şaşkın'],c:2},
+  ],
+  ar:[
+    {w:'مرحبا',p:'Marhaba',tr:'Merhaba',e:'مرحبا، كيف حالك؟',em:'👋',opts:['Merhaba','Hoşçakal','Teşekkürler','İyi geceler'],c:0},
+    {w:'شكراً',p:'Shukran',tr:'Teşekkür ederim',e:'شكراً جزيلاً على مساعدتك!',em:'🙏',opts:['Lütfen','Evet','Teşekkür ederim','Hayır'],c:2},
+    {w:'صباح الخير',p:'Sabah el-kheyr',tr:'Günaydın',e:'صباح الخير يا أصدقاء!',em:'🌅',opts:['İyi geceler','Günaydın','Merhaba','Hoşçakal'],c:1},
+    {w:'من فضلك',p:'Min fadlik',tr:'Lütfen',e:'من فضلك، ساعدني.',em:'🙏',opts:['Lütfen','Tamam','Hayır','Belki'],c:0},
+    {w:'ماء',p:'Ma\'a',tr:'Su',e:'أريد كوب ماء من فضلك.',em:'💧',opts:['Süt','Kahve','Su','Çay'],c:2},
+    {w:'صديق',p:'Sadiq',tr:'Arkadaş',e:'هي أفضل صديقة لي.',em:'👫',opts:['Aile','Komşu','Arkadaş','Öğretmen'],c:2},
+    {w:'عمل',p:'Amal',tr:'İş / Çalışmak',e:'أعمل كل يوم.',em:'💼',opts:['Tatil','İş / Çalışmak','Oyun','Uyku'],c:1},
+    {w:'جميل',p:'Jamil',tr:'Güzel',e:'ما أجمل هذا اليوم!',em:'✨',opts:['Güzel','Çirkin','Küçük','Büyük'],c:0},
+    {w:'وقت',p:'Waqt',tr:'Zaman',e:'الوقت يمر بسرعة.',em:'⏰',opts:['Para','Yer','Zaman','Hız'],c:2},
+    {w:'سعيد',p:'Sa\'id',tr:'Mutlu',e:'أنا سعيد جداً اليوم!',em:'😊',opts:['Üzgün','Kızgın','Mutlu','Şaşkın'],c:2},
+  ],
+  fr:[
+    {w:'Bonjour',p:'[bɔ̃.ʒuʁ]',tr:'Merhaba / Günaydın',e:'Bonjour, comment allez-vous?',em:'👋',opts:['Merhaba / Günaydın','Hoşçakal','Teşekkürler','İyi geceler'],c:0},
+    {w:'Merci',p:'[mɛʁ.si]',tr:'Teşekkür ederim',e:'Merci beaucoup pour votre aide!',em:'🙏',opts:['Lütfen','Evet','Teşekkür ederim','Hayır'],c:2},
+    {w:'S\'il vous plaît',p:'[sil vu plɛ]',tr:'Lütfen',e:'S\'il vous plaît, aidez-moi.',em:'🙏',opts:['Lütfen','Tamam','Hayır','Belki'],c:0},
+    {w:'Au revoir',p:'[o ʁə.vwaʁ]',tr:'Hoşça kalın / Güle güle',e:'Au revoir, à bientôt!',em:'👋',opts:['Merhaba','Hoşça kalın / Güle güle','Teşekkürler','Lütfen'],c:1},
+    {w:'Eau',p:'[o]',tr:'Su',e:'Je voudrais un verre d\'eau.',em:'💧',opts:['Süt','Kahve','Su','Çay'],c:2},
+    {w:'Ami',p:'[a.mi]',tr:'Arkadaş',e:'Elle est ma meilleure amie.',em:'👫',opts:['Aile','Komşu','Arkadaş','Öğretmen'],c:2},
+    {w:'Travail',p:'[tʁa.vaj]',tr:'İş / Çalışmak',e:'Je travaille tous les jours.',em:'💼',opts:['Tatil','İş / Çalışmak','Oyun','Uyku'],c:1},
+    {w:'Beau / Belle',p:'[bo / bɛl]',tr:'Güzel',e:'Quelle belle journée!',em:'✨',opts:['Güzel','Çirkin','Küçük','Büyük'],c:0},
+    {w:'Temps',p:'[tɑ̃]',tr:'Zaman / Hava',e:'Le temps passe vite.',em:'⏰',opts:['Para','Yer','Zaman / Hava','Hız'],c:2},
+    {w:'Heureux',p:'[ø.ʁø]',tr:'Mutlu',e:'Je suis très heureux aujourd\'hui!',em:'😊',opts:['Üzgün','Kızgın','Mutlu','Şaşkın'],c:2},
   ]
 };
 
@@ -789,17 +850,68 @@ function goHome(){showPage('home',document.querySelectorAll('.bn-item')[0]);}
 
 // ── LESSON ──
 let curLessonLang='en';
-function chLessonLang(l,el){curLessonLang=l;document.querySelectorAll('.cls-row .cls-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');lessonIdx=0;loadLesson();}
+let aiWords={en:[],de:[],zh:[],ja:[],ar:[],fr:[]};
+let aiWordLoading=false;
+
+function getLessonBank(){
+  return [...WORDS[curLessonLang],...(aiWords[curLessonLang]||[])];
+}
+
+function chLessonLang(l,el){
+  curLessonLang=l;
+  document.querySelectorAll('.cls-row .cls-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  lessonIdx=0;
+  loadLesson();
+  updateWordCount();
+  if(getLessonBank().length<20) fetchMoreWords();
+}
+
+function updateWordCount(){
+  const el=document.getElementById('lessonWordCount');
+  if(el) el.textContent=getLessonBank().length+' kelime';
+}
+
+async function fetchMoreWords(){
+  if(aiWordLoading)return;
+  aiWordLoading=true;
+  const btn=document.getElementById('lessonMoreBtn');
+  if(btn){btn.disabled=true;btn.textContent='⏳ Yükleniyor...';}
+  const langName=L[curLessonLang]?.native||'English';
+  const existing=getLessonBank().map(w=>w.w).slice(0,30).join(', ');
+  try{
+    const txt=await ai([{role:'user',content:`Generate 20 vocabulary words in ${langName} for language learners (A1-B1 level). Do NOT include these: ${existing}
+
+Reply ONLY with raw JSON array, nothing else:
+[{"w":"word","p":"pronunciation","tr":"Turkish meaning","e":"example sentence","em":"one emoji","opts":["correct Turkish","wrong1","wrong2","wrong3"],"c":0}]
+
+Rules:
+- "c" is the index (0-3) of the correct answer in "opts"
+- opts[c] must equal "tr"
+- All 4 opts must be different Turkish words
+- em must be a single emoji`}],1200);
+    const start=txt.indexOf('[');
+    const end=txt.lastIndexOf(']')+1;
+    if(start>=0&&end>start){
+      const arr=JSON.parse(txt.slice(start,end));
+      const valid=arr.filter(w=>w.w&&w.tr&&w.p&&w.e&&w.em&&Array.isArray(w.opts)&&w.opts.length===4);
+      aiWords[curLessonLang]=[...(aiWords[curLessonLang]||[]),...valid];
+      updateWordCount();
+    }
+  }catch(e){console.error('Kelime yüklenemedi:',e);}
+  aiWordLoading=false;
+  if(btn){btn.disabled=false;btn.textContent='✨ 20 Yeni Kelime Ekle';}
+}
 
 function loadLesson(){
-  const bank=WORDS[curLessonLang];
+  const bank=getLessonBank();
   const w=bank[lessonIdx%bank.length];
   answered=false;
   document.getElementById('wcEm').textContent=w.em;
   document.getElementById('wcW').textContent=w.w;
   document.getElementById('wcPh').textContent=w.p;
   document.getElementById('wcEx').textContent='"'+w.e+'"';
-  document.getElementById('lessonProg').style.width=Math.min(((lessonIdx%10)/10)*100+10,100)+'%';
+  document.getElementById('lessonProg').style.width=Math.min(((lessonIdx%bank.length)/bank.length)*100+5,100)+'%';
   document.getElementById('fbBar').className='fb-bar';
   document.getElementById('contBtn').className='cont-btn';
   const grid=document.getElementById('ansGrid');
@@ -810,6 +922,7 @@ function loadLesson(){
     b.onclick=()=>checkAns(i,w.c,w.opts);
     grid.appendChild(b);
   });
+  if(lessonIdx>0&&lessonIdx%10===0&&!aiWordLoading) fetchMoreWords();
 }
 
 function checkAns(chosen,corr,opts){
@@ -1060,6 +1173,42 @@ const PRO_WORDS={
     {w:'对冲',tr:'Riskten korunma',p:'duì chōng',e:'我们用远期合约对冲汇率风险。',s:'finance'},
     {w:'复利',tr:'Bileşik faiz',p:'fù lì',e:'复利使您的储蓄呈指数增长。',s:'finance'},
     {w:'股权',tr:'Özkaynak / Hisse',p:'gǔ quán',e:'这家初创公司筹集了200万美元的股权融资。',s:'finance'},
+  ],
+  ja:[
+    {w:'物流',tr:'Lojistik',p:'butsuryu',e:'物流コストが上昇しています。',s:'logistics'},
+    {w:'通関',tr:'Gümrük tahliyesi',p:'tsuukan',e:'通関に3日かかりました。',s:'logistics'},
+    {w:'船荷証券',tr:'Konşimento',p:'funani shoken',e:'船荷証券を港で提示する必要があります。',s:'logistics'},
+    {w:'サプライチェーン',tr:'Tedarik zinciri',p:'sapurai cheen',e:'パンデミックはグローバルサプライチェーンを混乱させました。',s:'logistics'},
+    {w:'信用状',tr:'Akreditif',p:'shinyujo',e:'出荷前に信用状が必要です。',s:'trade'},
+    {w:'輸出許可証',tr:'İhracat lisansı',p:'yushutsu kyokasho',e:'この製品には輸出許可証が必要です。',s:'trade'},
+    {w:'関税',tr:'Gümrük vergisi',p:'kanzei',e:'新しい関税が輸入コストを大幅に引き上げました。',s:'trade'},
+    {w:'投資収益率',tr:'Yatırım getirisi (ROI)',p:'toshi shuekiritsu',e:'このプロジェクトのROIは25%と予想されます。',s:'finance'},
+    {w:'流動性',tr:'Likidite',p:'ryudosei',e:'会社は流動性危機に直面しています。',s:'finance'},
+    {w:'自由貿易区',tr:'Serbest ticaret bölgesi',p:'jiyu boeki ku',e:'工場は自由貿易区にあります。',s:'trade'},
+  ],
+  ar:[
+    {w:'لوجستيات',tr:'Lojistik',p:'Lujistiyat',e:'تكاليف اللوجستيات ارتفعت بنسبة 20%.',s:'logistics'},
+    {w:'التخليص الجمركي',tr:'Gümrük tahliyesi',p:'At-takhlees al-jumruki',e:'استغرق التخليص الجمركي ثلاثة أيام.',s:'logistics'},
+    {w:'سلسلة التوريد',tr:'Tedarik zinciri',p:'Silsilat at-tawrid',e:'أدت الجائحة إلى تعطيل سلاسل التوريد العالمية.',s:'logistics'},
+    {w:'خطاب الاعتماد',tr:'Akreditif',p:'Khitab al-i\'timad',e:'نطلب خطاب اعتماد قبل الشحن.',s:'trade'},
+    {w:'رخصة التصدير',tr:'İhracat lisansı',p:'Rukhsat at-tasdir',e:'تحتاج إلى رخصة تصدير لهذا المنتج.',s:'trade'},
+    {w:'رسوم جمركية',tr:'Gümrük vergisi',p:'Rusum jumrukiya',e:'رفعت الرسوم الجمركية الجديدة تكاليف الاستيراد.',s:'trade'},
+    {w:'عائد الاستثمار',tr:'Yatırım getirisi',p:'A\'id al-istithmar',e:'من المتوقع أن يكون عائد الاستثمار 25%.',s:'finance'},
+    {w:'السيولة',tr:'Likidite',p:'As-sayula',e:'تواجه الشركة أزمة سيولة.',s:'finance'},
+    {w:'منطقة التجارة الحرة',tr:'Serbest ticaret bölgesi',p:'Mintaqat at-tijara al-hurra',e:'المصنع في منطقة التجارة الحرة.',s:'trade'},
+    {w:'حقوق الملكية',tr:'Özkaynak',p:'Huquq al-milkiya',e:'جمعت الشركة الناشئة 2 مليون دولار.',s:'finance'},
+  ],
+  fr:[
+    {w:'Fret',tr:'Navlun / Yük taşıma',p:'[fʁɛ]',e:'Les coûts de fret ont augmenté de 20%.',s:'logistics'},
+    {w:'Dédouanement',tr:'Gümrük tahliyesi',p:'[de.du.an.mɑ̃]',e:'Le dédouanement a pris trois jours.',s:'logistics'},
+    {w:'Connaissement',tr:'Konşimento',p:'[kɔ.nɛ.smɑ̃]',e:'Le connaissement doit être présenté au port.',s:'logistics'},
+    {w:'Chaîne logistique',tr:'Tedarik zinciri',p:'[ʃɛn lɔ.ʒis.tik]',e:'La pandémie a perturbé les chaînes logistiques mondiales.',s:'logistics'},
+    {w:'Lettre de crédit',tr:'Akreditif',p:'[lɛtʁ də kʁe.di]',e:'Nous exigeons une lettre de crédit avant l\'expédition.',s:'trade'},
+    {w:'Licence d\'exportation',tr:'İhracat lisansı',p:'[li.sɑ̃s dɛk.spɔʁ.ta.sjɔ̃]',e:'Vous avez besoin d\'une licence d\'exportation.',s:'trade'},
+    {w:'Tarif douanier',tr:'Gümrük vergisi',p:'[ta.ʁif dwa.nje]',e:'Le nouveau tarif a augmenté les coûts d\'importation.',s:'trade'},
+    {w:'Retour sur investissement',tr:'Yatırım getirisi',p:'[ʁə.tuʁ syʁ ɛ̃.vɛs.tis.mɑ̃]',e:'Le ROI de ce projet est estimé à 25%.',s:'finance'},
+    {w:'Liquidité',tr:'Likidite',p:'[li.ki.di.te]',e:'L\'entreprise fait face à une crise de liquidité.',s:'finance'},
+    {w:'Zone de libre-échange',tr:'Serbest ticaret bölgesi',p:'[zon də libʁ e.ʃɑ̃ʒ]',e:'L\'usine est située dans une zone de libre-échange.',s:'trade'},
   ]
 };
 
@@ -1143,7 +1292,7 @@ All items must have all 5 fields. "s" must be exactly one of: logistics, finance
 
 // ── VIDEO DERS ──
 let vdLang='en', vdIdx=0, vdActive=false, vdSpeaking=false;
-const vdVoices={en:'en-US',de:'de-DE',zh:'zh-CN'};
+const vdVoices={en:'en-US',de:'de-DE',zh:'zh-CN',ja:'ja-JP',ar:'ar-SA',fr:'fr-FR'};
 
 function vdChLang(l,el){
   vdLang=l;
@@ -1172,7 +1321,7 @@ function vdStart(){
 }
 
 function vdShowWord(){
-  const bank=WORDS[vdLang];
+  const bank=vdLang===curLessonLang?getLessonBank():WORDS[vdLang];
   const w=bank[vdIdx%bank.length];
   document.getElementById('vdWord').textContent=w.w;
   document.getElementById('vdPhonetic').textContent=w.p;
@@ -1257,7 +1406,7 @@ function vdCheckQuiz(btn,isCorrect,correctTr){
 function vdNext(){
   window.speechSynthesis.cancel();
   vdIdx++;
-  const bank=WORDS[vdLang];
+  const bank=vdLang===curLessonLang?getLessonBank():WORDS[vdLang];
   if(vdIdx>=bank.length){
     document.getElementById('vdWord').textContent='Tebrikler! 🏆';
     document.getElementById('vdPhonetic').textContent='Tüm kelimeleri tamamladın';
